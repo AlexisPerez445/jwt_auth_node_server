@@ -63,7 +63,7 @@ const forgotPassword = async (request, response) => {
         sendMail.sendMail(result.nombre, result.email, generateTokenResetPassword(result.id) );
         response.send(JSON.stringify("Enviado"));
     } catch (error) {
-        response.send(JSON.stringify("user no encontrado!!"));
+        response.send(JSON.stringify("user email not found"));
     }
 }
 
@@ -74,7 +74,7 @@ const resetPassword = async (request, response) => {
     if(request.body.p1 === request.body.p2){
         const result = await setNewPassword(id, p1 );
         if(result){
-            response.send(JSON.stringify(result));
+            response.send(JSON.stringify("Contraseña cambiada"));
         } else {
             response.send(JSON.stringify("Error a insertar nueva contraseña"));
         }
