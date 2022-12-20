@@ -9,15 +9,14 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 const login = async (request, response) => {
     const email = request.body.email;
-
     try {
-        const user = await prisma.usuario.findUnique({
+        const user = await prisma.user.findUnique({
             where: {
                 email
             },
             select: {
                 id: true,
-                nombre: true,
+                name: true,
                 password: true
             },
         });
@@ -41,7 +40,7 @@ const login = async (request, response) => {
 
     } catch (error) {
         console.log(error);
-        response.send(JSON.stringify("Usuario no encontrado"));
+        response.send(JSON.stringify("user no encontrado"));
     } 
 }
 
@@ -55,7 +54,7 @@ const checkToken = (request, response) => {
 const forgotPassword = async (request, response) => {
     const email = request.body.email;
     try {
-        const result = await prisma.usuario.findUnique({
+        const result = await prisma.user.findUnique({
             where: {
                 email
             }
@@ -63,7 +62,7 @@ const forgotPassword = async (request, response) => {
         sendMail.sendMail(result.nombre, result.email, generateTokenResetPassword(result.id) );
         response.send(JSON.stringify("Enviado"));
     } catch (error) {
-        response.send(JSON.stringify("Usuario no encontrado"));
+        response.send(JSON.stringify("user no encontrado!!"));
     }
 }
 

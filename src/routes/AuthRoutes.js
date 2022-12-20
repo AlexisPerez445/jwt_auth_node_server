@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../jwt/JWTUtils');
+const { login, checkToken, forgotPassword, resetPassword } = require('../controllers/AuthController')
 
 const auth = '/auth';
 
