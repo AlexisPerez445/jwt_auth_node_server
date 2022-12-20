@@ -9,14 +9,15 @@ BigInt.prototype.toJSON = function () { return this.toString() }
 
 const login = async (request, response) => {
     const email = request.body.email;
+    console.log(email);
     try {
-        const user = await prisma.user.findUnique({
+        const user = await prisma.usuario.findUnique({
             where: {
                 email
             },
             select: {
                 id: true,
-                name: true,
+                nombre: true,
                 password: true
             },
         });
