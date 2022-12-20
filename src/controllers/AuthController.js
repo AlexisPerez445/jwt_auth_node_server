@@ -55,7 +55,7 @@ const checkToken = (request, response) => {
 const forgotPassword = async (request, response) => {
     const email = request.body.email;
     try {
-        const result = await prisma.user.findUnique({
+        const result = await prisma.usuario.findUnique({
             where: {
                 email
             }
