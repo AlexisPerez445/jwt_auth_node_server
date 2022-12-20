@@ -19,7 +19,7 @@ const sendEmail =  async (nombre, email, token) => {
     from: '"Fred Foo 👻" <traceur35@gmail.com>',
     to: `${email}`, 
     subject: "CREAR NUEVA PASSWORD", 
-    html: `<b>Hola,${nombre}, <br>
+    html: `<b>Hola, ${nombre}, <br>
     Puedes crear una nueva contraseña en el siguiente enlace: <br>
     http://localhost:4200/reset-password/${token}
     </b>`,
