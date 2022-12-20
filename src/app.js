@@ -9,7 +9,6 @@ const cors = require('cors');
 
 const authRoutes = require('./routes/AuthRoutes');
 
-
 app.listen(port, () =>{
     console.log('Server run');
 });

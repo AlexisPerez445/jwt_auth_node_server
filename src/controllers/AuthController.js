@@ -18,12 +18,7 @@ const login = async (request, response) => {
             select: {
                 id: true,
                 nombre: true,
-                password: true,
-                rol: {
-                    select: {
-                        rol: true
-                    }
-                }
+                password: true
             },
         });
         const comparePassword = await bcrypt.compare(request.body.password, user.password);
@@ -33,8 +28,7 @@ const login = async (request, response) => {
             const data = {
                 ok: true,
                 name: user.nombre,
-                rol: user.rol.rol,
-                token: generateToken(user.id, user.nombre, user.rol.rol)
+                token: generateToken(user.id, user.nombre)
             }
             response.send( JSON.stringify(data) );
         } else {
