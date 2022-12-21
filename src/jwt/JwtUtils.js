@@ -9,7 +9,7 @@ const generateToken = (id, username) => {
 }
 
 const generateTokenResetPassword = (id) => {
-    return jwt.sign({id}, secretkey, { expiresIn: '5m' });
+    return jwt.sign({id}, secretkey, { expiresIn: '2m' });
 }
 
 const verifyToken = (req, res, next) => {
